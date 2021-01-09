@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
 
+import {
+  BrowserRouter as Router,
+  Switch, Route
+} from "react-router-dom";
+import { GlobalStyle } from './globalStyle';
+import Hero from './components/Hero';
+import ListOfUser from './components/ListOfPeople';
+import People from './components/ListOfPeople/people'
+import CreatePeople from './components/ListOfPeople/CreatePeople';
+
 function App() {
+  
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <GlobalStyle/>
+      
+     
+     <Switch>
+        <Route exact path='/'><Hero/></Route>
+        <Route  path='/ListOfUser' component={ListOfUser} />
+        <Route  path='/ListofPeople/CreatePeople' component={CreatePeople} />
+        <Route path="/ListofPeople/:userId" component={ People } />
+    
+      </Switch>
+      
+     
+     </Router>
   );
 }
 
 export default App;
+
